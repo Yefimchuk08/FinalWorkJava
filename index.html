@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Бібліотека</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <nav>
+    <button onclick="showSection('books')">Книги</button>
+    <button onclick="showSection('visitors')">Відвідувачі</button>
+    <button onclick="showSection('cards')">Картки</button>
+    <button onclick="showSection('stats')">Статистика</button>
+  </nav>
+
+
+  <div id="books" class="section active">
+    <h2>Книги</h2>
+    <button onclick="showBookForm()">Додати книгу</button>
+    <input type="text" id="bookSearch" placeholder="Пошук..." oninput="renderBooks()">
+    <table>
+      <thead>
+        <tr>
+          <th onclick="sortBooks('title')">Назва</th>
+          <th onclick="sortBooks('author')">Автор</th>
+          <th onclick="sortBooks('count')">Кількість</th>
+          <th>Дії</th>
+        </tr>
+      </thead>
+      <tbody id="booksTable"></tbody>
+    </table>
+    <div class="form-container" id="bookForm" style="display:none">
+      <input id="title" placeholder="Назва">
+      <input id="author" placeholder="Автор">
+      <input id="year" type="number" placeholder="Рік">
+      <input id="publisher" placeholder="Видавництво">
+      <input id="pages" type="number" placeholder="Сторінки">
+      <input id="count" type="number" placeholder="Кількість">
+      <button onclick="saveBook()">Зберегти</button>
+    </div>
+  </div>
+
+
+  <div id="visitors" class="section">
+    <h2>Відвідувачі</h2>
+    <button onclick="showVisitorForm()">Додати відвідувача</button>
+    <input type="text" id="visitorSearch" placeholder="Пошук..." oninput="renderVisitors()">
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Ім’я</th>
+          <th>Телефон</th>
+          <th>Дії</th>
+        </tr>
+      </thead>
+      <tbody id="visitorsTable"></tbody>
+    </table>
+    <div class="form-container" id="visitorForm" style="display:none">
+      <input id="vname" placeholder="ПІБ">
+      <input id="vphone" placeholder="Телефон">
+      <button onclick="saveVisitor()">Зберегти</button>
+    </div>
+  </div>
+
+
+  <div id="cards" class="section">
+    <h2>Картки</h2>
+    <button onclick="showCardForm()">Видати книгу</button>
+    <input type="text" id="cardSearch" placeholder="Пошук..." oninput="renderCards()">
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Відвідувач</th>
+          <th>Книга</th>
+          <th>Дата видачі</th>
+          <th>Дата повернення</th>
+        </tr>
+      </thead>
+      <tbody id="cardsTable"></tbody>
+    </table>
+    <div class="form-container" id="cardForm" style="display:none">
+      <select id="cardVisitor"></select>
+      <select id="cardBook"></select>
+      <button onclick="saveCard()">Зберегти</button>
+    </div>
+  </div>
+
+  <div id="stats" class="section">
+    <h2>Статистика</h2>
+    <h3>Топ 5 книг</h3>
+    <ul id="topBooks"></ul>
+    <h3>Топ 5 відвідувачів</h3>
+    <ul id="topVisitors"></ul>
+  </div>
+  <script src="main.js"></script>
+</body>
+
+</html>
